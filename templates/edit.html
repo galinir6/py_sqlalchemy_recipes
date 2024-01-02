@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="alert alert-info" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+
+<h1>Edit Recipe</h1>
+<form method="post" action="{{ url_for('edit', recipe_id=recipe.id) }}">
+    <div class="mb-3">
+        <label for="name" class="form-label">Recipe Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ recipe.name }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="ingredients" class="form-label">Ingredients</label>
+        <input type="text" class="form-control" id="ingredients" name="ingredients" value="{{ recipe.ingredients }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="prepTime" class="form-label">Preparation Time</label>
+        <input type="text" class="form-control" id="prepTime" name="prepTime" value="{{ recipe.prepTime }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Recipe</button>
+</form>
+{% endblock %}
