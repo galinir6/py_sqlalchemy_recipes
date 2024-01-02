@@ -1,2 +1,2 @@
-# Falsk app for recipes, using sqlAlchemy
+# Flask app for recipes, using sqlAlchemy
 
